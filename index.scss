@@ -48,8 +48,10 @@ body {
 }
 
 //display section
-.display-weather {
-  margin-top: 1rem;
+.display {
   visibility: hidden;
+  //display weather
+  .display-weather {
+    margin-top: 1rem;
+  }
 }
-
