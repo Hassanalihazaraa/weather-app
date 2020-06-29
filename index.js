@@ -1,7 +1,7 @@
 //import api key
 import {API_KEY} from './config.js';
 //search input
-import {input, location, country, temperature, humidity} from './util.js';
+import {input, location, temperature, humidity} from './util.js';
 
 //handling input event and fetching data
 const handleChange = e => {
@@ -11,9 +11,9 @@ const handleChange = e => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            location.textContent = data.name;
-           // country.textContent = data.sys.country;
-            //temperature.textContent = data.;
+            location.textContent = data.name + ', ' + data.sys.country;
+            temperature.textContent = Math.floor(data.main.temp) + ' C';
+            humidity.textContent = data.main.humidity + '%';
         })
 }
 
