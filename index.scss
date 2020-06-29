@@ -1,0 +1,52 @@
+//variables
+$background: #32407b;
+$textColor: #cccccc;
+
+
+//reset margin adn padding
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+//body
+body {
+  height: 100vh;
+  background: $background;
+  overflow-y: hidden;
+  font-family: sans-serif;
+}
+
+
+//label
+.search-city {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2rem;
+
+  //label
+  label {
+    margin: 2rem 0;
+    text-align: center;
+    font-size: 2rem;
+    color: $textColor;
+  }
+
+  //search city
+  .search {
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 1rem;
+    border: 0.5px solid $textColor;
+    padding: 0.8rem;
+    outline-style: none;
+  }
+}
+
+//display section
+
+
