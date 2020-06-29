@@ -1,14 +1,20 @@
-//api key
-const API_KEY = '21582a8ed2d42291639912bd90ae6204';
-const input = document.querySelector("#search");
+//import api key
+import {API_KEY} from './config.js';
+//search input
+import {input, location, country, temperature, humidity} from './util.js';
 
 //handling input event and fetching data
 const handleChange = e => {
-    const inputValue = e.target.value;
     e.preventDefault();
+    const inputValue = e.target.value;
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${API_KEY}&units=metric`)
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            location.textContent = data.name;
+           // country.textContent = data.sys.country;
+            //temperature.textContent = data.;
+        })
 }
 
 //input change event
