@@ -8,25 +8,62 @@
     <link rel="stylesheet" href="index.css">
     <title>Weather Api</title>
 </head>
-<body>
+<body class="body">
+<!-- search area -->
 <section class="main">
     <div class="search-city">
         <label>Weather Forecast</label>
         <input type="text" class="search" id="search" placeholder="Search"/>
     </div>
 </section>
+<!-- Display weather -->
 <section class="display">
+    <!-- Current weather -->
     <div class="display-weather">
-        <h1 class="city">location</h1>
-        <p class="icon">icon</p>
-        <p class="temp">temperature</p>
+        <img class="icon-image" alt="">
+        <h1 class="temp">temperature</h1>
+        <p class="description">description</p>
+        <p class="city">location</p>
+        <p class="timezone"></p>
         <p class="humidity">Humidity</p>
     </div>
+    <div class="forecast-heading">
+        <h1>Next 4 days of weather forecast</h1>
+    </div>
+    <!-- forecast -->
     <div class="forecast">
-        <p class="weather">weather</p>
-        <p class="weather">weather</p>
-        <p class="weather">weather</p>
-        <p class="weather">weather</p>
+        <div class="weather">
+            <h1>Days</h1>
+            <img src="" class="icon2" alt="">
+            <div>
+                <h1 class="temperature2">temperature</h1>
+                <p class="description2">description</p>
+            </div>
+        </div>
+        <div class="weather">
+            <h1>Days</h1>
+            <img src="" class="icon3" alt="">
+            <div>
+                <h1 class="temperature3">temperature</h1>
+                <p class="description3">description</p>
+            </div>
+        </div>
+        <div class=" weather">
+            <h1>Days</h1>
+            <img src="" class="icon4" alt="">
+            <div>
+                <h1 class="temperature4">temperature</h1>
+                <p class="description4">description</p>
+            </div>
+        </div>
+        <div class="weather">
+            <h1>Days</h1>
+            <img src="" class="icon5" alt="">
+            <div>
+                <h1 class="temperature5">temperature</h1>
+                <p class="description5">description</p>
+            </div>
+        </div>
     </div>
 </section>
 <script type="module" src="index.js"></script>

@@ -1,6 +1,6 @@
 //variables
 $background: #32407b;
-$textColor: #cccccc;
+$textColor: white;
 
 
 //reset margin adn padding
@@ -47,11 +47,89 @@ body {
   }
 }
 
+
+.forecast-heading {
+  text-align: center;
+  margin-top: 2rem;
+  color: $textColor;
+}
+
 //display section
 .display {
   visibility: hidden;
-  //display weather
-  .display-weather {
-    margin-top: 1rem;
+}
+
+//display weather
+.display-weather {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  color: $textColor;
+}
+
+.display-weather:hover {
+  -webkit-box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.4);
+}
+
+//forecast
+.forecast {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+//weather
+.weather {
+  background: $textColor;
+  width: 20%;
+  height: 40vh;
+  border-radius: 1rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.weather:hover {
+  -webkit-box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.4);
+}
+
+//responsiveness
+//860 and down
+@media only screen and (max-width: 768px) {
+  .forecast {
+    display: flex;
+    flex-direction: column;
+
+    .weather {
+      width: 50%;
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
+
+//860 and up
+@media only screen and (min-width: 768px) {
+  .weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
