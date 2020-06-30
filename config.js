@@ -1,0 +1,2 @@
+export const API_KEY = '21582a8ed2d42291639912bd90ae6204';
+export const API_KEY_UNSPLASH = 'pYY8ppRJJQW-HHxtIZ0xW5Fhlm7W8ARR9G_6i_zWmLE';
