@@ -113,7 +113,7 @@ const forecast = async e => {
 const backgroundImage = async (inputValue) => {
     const response = await fetch(`https://api.unsplash.com/search/photos?query=${inputValue}&client_id=pYY8ppRJJQW-HHxtIZ0xW5Fhlm7W8ARR9G_6i_zWmLE`);
     const data = await response.json();
-    const picture = data.results[1].urls.raw + "&w=1300&dpr";
+    const picture = data.results[1].urls.raw + "&w=1920&dpr";
     const weatherPic = data.results[4].urls.small + "&w=650&dpr";
     document.querySelector(".body").style.backgroundImage = `url(${picture})`;
     document.querySelector(".display-weather").style.backgroundImage = `url(${weatherPic})`;
