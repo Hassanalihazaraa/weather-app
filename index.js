@@ -30,25 +30,27 @@ import {
 
 //handling input event and fetching data
 const handleChange = async e => {
-    e.preventDefault();
-    const inputValue = e.target.value;
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${API_KEY}&units=metric`)
-    const data = await response.json();
-    displayWeather.style = "visibility: visible";
-    location.textContent = data.name + ', ' + data.sys.country;
-    temperature.textContent = Math.floor(data.main.temp) + ' °C';
-    humidity.textContent = 'Humidity ' + data.main.humidity + '%';
-    const dateTime = new Date(data.sys.sunrise * 1000).toLocaleDateString(undefined, {
-        day: 'numeric',
-        month: 'long'
-    });
-    timeZone.textContent = dateTime;
-    weatherDescription.textContent = data.weather[0].description;
-    iconImage.textContent = icons(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
-    //forecast 4 days
-    forecast(e);
-    //change background image
-    backgroundImage(inputValue);
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        const inputValue = e.target.value;
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${API_KEY}&units=metric`)
+        const data = await response.json();
+        displayWeather.style = "visibility: visible";
+        location.textContent = data.name + ', ' + data.sys.country;
+        temperature.textContent = Math.floor(data.main.temp) + ' °C';
+        humidity.textContent = 'Humidity ' + data.main.humidity + '%';
+        const dateTime = new Date(data.sys.sunrise * 1000).toLocaleDateString(undefined, {
+            day: 'numeric',
+            month: 'long'
+        });
+        timeZone.textContent = dateTime;
+        weatherDescription.textContent = data.weather[0].description;
+        iconImage.textContent = icons(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+        //forecast 4 days
+        forecast(e);
+        //change background image
+        backgroundImage(inputValue);
+    }
 }
 //icons
 const icons = iconSrc => {
@@ -165,5 +167,5 @@ const backgroundImage = async (inputValue) => {
 }
 
 //input change event
-input.addEventListener('change', handleChange);
+input.addEventListener('keydown', handleChange);
 
