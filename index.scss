@@ -106,7 +106,7 @@ body {
 }
 
 //responsiveness
-//860 and down
+//768px and down
 @media only screen and (max-width: 768px) {
   .forecast {
     display: flex;
@@ -123,7 +123,7 @@ body {
   }
 }
 
-//860 and up
+//768px and up
 @media only screen and (min-width: 768px) {
   .weather {
     display: flex;
