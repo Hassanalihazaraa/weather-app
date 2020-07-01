@@ -18,3 +18,7 @@ export const icon2 = document.querySelector(".icon2");
 export const icon3 = document.querySelector(".icon3");
 export const icon4 = document.querySelector(".icon4");
 export const icon5 = document.querySelector(".icon5");
+export const day2 = document.querySelector(".day2");
+export const day3 = document.querySelector(".day3");
+export const day4 = document.querySelector(".day4");
+export const day5 = document.querySelector(".day5");

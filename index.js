@@ -21,7 +21,11 @@ import {
     icon2,
     icon3,
     icon4,
-    icon5
+    icon5,
+    day2,
+    day3,
+    day4,
+    day5
 } from './var.js';
 
 //handling input event and fetching data
@@ -93,6 +97,46 @@ const forecast = async e => {
         }
         return mostFrequent;
     }
+    //display day names
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const date = new Date();
+    if (date.getDay() === 0) {
+        day2.textContent = dayNames[date.getDay() + 1];
+        day3.textContent = dayNames[date.getDay() + 2];
+        day4.textContent = dayNames[date.getDay() + 3];
+        day5.textContent = dayNames[date.getDay() + 4];
+    } else if (date.getDay() === 1) {
+        day2.textContent = dayNames[date.getDay() + 1];
+        day3.textContent = dayNames[date.getDay() + 2];
+        day4.textContent = dayNames[date.getDay() + 3];
+        day5.textContent = dayNames[date.getDay() + 4];
+    } else if (date.getDay() === 2) {
+        day2.textContent = dayNames[date.getDay() + 1];
+        day3.textContent = dayNames[date.getDay() + 2];
+        day4.textContent = dayNames[date.getDay() + 3];
+        day5.textContent = dayNames[date.getDay() + 4];
+    } else if (date.getDay() === 3) {
+        day2.textContent = dayNames[date.getDay() + 1];
+        day3.textContent = dayNames[date.getDay() + 2];
+        day4.textContent = dayNames[date.getDay() + 3];
+        day5.textContent = dayNames[date.getDay() - 3];
+    } else if (date.getDay() === 4) {
+        day2.textContent = dayNames[date.getDay() + 1];
+        day3.textContent = dayNames[date.getDay() + 2];
+        day4.textContent = dayNames[date.getDay() - 4];
+        day5.textContent = dayNames[date.getDay() - 3];
+    } else if (date.getDay() === 5) {
+        day2.textContent = dayNames[date.getDay() + 1];
+        day3.textContent = dayNames[date.getDay() - 4];
+        day4.textContent = dayNames[date.getDay() - 3];
+        day5.textContent = dayNames[date.getDay() - 2];
+    } else if (date.getDay() === 6) {
+        day2.textContent = dayNames[date.getDay() - 6];
+        day3.textContent = dayNames[date.getDay() - 5];
+        day4.textContent = dayNames[date.getDay() - 4];
+        day5.textContent = dayNames[date.getDay() - 2];
+    }
+
     //display temperature
     temperature2.textContent = averageTemp(temperature.slice(8, 16)) + ' °C';
     temperature3.textContent = averageTemp(temperature.slice(16, 24)) + ' °C';
