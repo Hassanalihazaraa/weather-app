@@ -100,6 +100,7 @@ const forecast = async e => {
     //display day names
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const date = new Date();
+    //The code is repetitive i know but it works for now, will change in the future if i found better and shorter solution
     if (date.getDay() === 0) {
         day2.textContent = dayNames[date.getDay() + 1];
         day3.textContent = dayNames[date.getDay() + 2];
