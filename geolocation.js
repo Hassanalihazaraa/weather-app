@@ -1,85 +1,46 @@
-//import api key
-import {API_KEY, API_KEY_UNSPLASH} from './config.js';
-//import variables
+import {API_KEY} from "./config.js";
 import {
-    input,
-    location,
-    temperature,
-    humidity,
-    weatherDescription,
-    displayWeather,
-    timeZone,
-    iconImage,
-    temperature2,
-    temperature3,
-    temperature4,
-    temperature5,
-    description2,
-    description3,
-    description4,
-    description5,
-    icon2,
-    icon3,
-    icon4,
-    icon5,
     day2,
     day3,
     day4,
     day5,
-    error,
-} from './var.js';
-import {currentWeather, currentForecast} from './geolocation.js';
-//get current location when user enters homepage
-window.addEventListener('load', () => {
-    try {
-        let lon;
-        let lat;
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-                lon = position.coords.longitude;
-                lat = position.coords.latitude;
-                currentWeather(lat, lon);
-                currentForecast(lat, lon);
-            })
-        }
-    } catch {
-        error.textContent = 'Please accept the allow location access to be able to see weather forecast';
-    }
-})
+    description2,
+    description3,
+    description4,
+    description5,
+    displayWeather,
+    humidity,
+    icon2,
+    icon3,
+    icon4,
+    icon5,
+    iconImage,
+    location,
+    temperature,
+    temperature2,
+    temperature3,
+    temperature4,
+    temperature5,
+    timeZone,
+    weatherDescription
+} from "./var.js";
 
-//handling input event and fetching data
-const handleChange = async e => {
-    if (e.key === 'Enter') {
-        try {
-            e.preventDefault();
-            const inputValue = e.target.value;
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${API_KEY}&units=metric`)
-            const data = await response.json();
-            location.textContent = data.name + ', ' + data.sys.country;
-            temperature.textContent = Math.floor(data.main.temp) + ' °C';
-            humidity.textContent = 'Humidity ' + data.main.humidity + '%';
-            const dateTime = new Date(data.sys.sunrise * 1000).toLocaleDateString(undefined, {
-                day: 'numeric',
-                month: 'long'
-            });
-            timeZone.textContent = dateTime;
-            weatherDescription.textContent = data.weather[0].description;
-            iconImage.textContent = icons(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
-            //forecast 4 days
-            forecast(e);
-            //change background image
-            backgroundImage(inputValue);
-            displayWeather.style = "visibility: visible";
-        } catch {
-            error.textContent = 'Incorrect city name';
-            error.style = "visibility: visible";
-            setTimeout(() => {
-                error.style = "visibility: hidden";
-            }, 2000)
-            displayWeather.style = "visibility: hidden";
-        }
-    }
+export const currentWeather = async (lat, lon) => {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
+    const data = await response.json();
+    location.textContent = data.name + ', ' + data.sys.country;
+    temperature.textContent = Math.floor(data.main.temp) + ' °C';
+    humidity.textContent = 'Humidity ' + data.main.humidity + '%';
+    const dateTime = new Date(data.sys.sunrise * 1000).toLocaleDateString(undefined, {
+        day: 'numeric',
+        month: 'long'
+    });
+    timeZone.textContent = dateTime;
+    weatherDescription.textContent = data.weather[0].description;
+    iconImage.textContent = icons(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+    displayWeather.style = "visibility: visible";
 }
+
 //icons
 const icons = iconSrc => {
     iconImage.setAttribute("src", iconSrc);
@@ -90,12 +51,9 @@ const averageTemp = arr => {
     return Math.floor(arr.reduce((a, b) => a + b, 0) / arr.length);
 }
 
-
 //forecast for next 4 days
-const forecast = async e => {
-    e.preventDefault();
-    const targetValue = e.target.value;
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${targetValue}&appid=${API_KEY}&units=metric`);
+export const currentForecast = async (lat, lon) => {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
     const data = await response.json();
     const lists = data.list;
     //get temperature, description and icons
@@ -184,15 +142,3 @@ const forecast = async e => {
     icon4.src = `http://openweathermap.org/img/wn/${icons.slice(24, 32)[0]}@2x.png`;
     icon5.src = `http://openweathermap.org/img/wn/${icons.slice(32, 40)[0]}@2x.png`;
 }
-//change background image correspond to the city
-const backgroundImage = async (inputValue) => {
-    const response = await fetch(`https://api.unsplash.com/search/photos?query=${inputValue}&client_id=${API_KEY_UNSPLASH}`);
-    const data = await response.json();
-    const picture = data.results[1].urls.raw + "&w=1920&dpr";
-    const weatherPic = data.results[4].urls.small + "&w=650&dpr";
-    document.querySelector(".body").style.backgroundImage = `url(${picture})`;
-    document.querySelector(".display-weather").style.backgroundImage = `url(${weatherPic})`;
-}
-
-//input change event
-input.addEventListener('keydown', handleChange);
