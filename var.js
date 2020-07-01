@@ -22,3 +22,4 @@ export const day2 = document.querySelector(".day2");
 export const day3 = document.querySelector(".day3");
 export const day4 = document.querySelector(".day4");
 export const day5 = document.querySelector(".day5");
+export const error = document.querySelector(".error");

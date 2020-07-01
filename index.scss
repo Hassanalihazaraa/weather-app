@@ -28,11 +28,24 @@ body {
   margin-top: 2rem;
 
   //label
-  label {
+  .weather-search {
     margin: 2rem 0;
     text-align: center;
     font-size: 2rem;
     color: $textColor;
+  }
+
+  //error
+  .error {
+    margin: 0 auto;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: $textColor;
+    background: red;
+    border-radius: 5px;
+    padding: 0.5rem;
+    visibility: hidden;
   }
 
   //search city
